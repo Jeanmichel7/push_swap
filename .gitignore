@@ -1,0 +1,10 @@
+.normignore
+*.o
+libft/*.o
+.vscode
+checker
+libft/libft.a
+log.txt
+push_swap
+push_swap*
+push_swap_tester
