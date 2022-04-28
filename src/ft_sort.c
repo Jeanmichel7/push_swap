@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:20:16 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/04/19 00:12:39 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:05:47 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ t_tabs	ft_first_sort(t_tabs tabs)
 	while (sort.i < tabs.a.size + tabs.b.size
 		&& ft_tab_is_sort_with_rotate(tabs.a) != 1 && !ft_tab_is_sort(tabs.a))
 	{
-		if (tabs.b.size % S_BLOCK == 0)
+		ft_print_tabs(tabs);
+		if (tabs.b.size % S_BLOCK == 0 && tabs.b.size > 0)
 		{
 			tabs = ft_order_tabs_b(tabs);
 			sort.offset = 0;
@@ -76,8 +77,10 @@ t_tabs	ft_second_sort(t_tabs tabs)
 {
 	while (tabs.b.size)
 	{
+		ft_print_tabs(tabs);
 		tabs = ft_pa_ordered(tabs);
 	}
+	ft_print_tabs(tabs);
 	tabs = ft_order_tabs_a(tabs);
 	return (tabs);
 }

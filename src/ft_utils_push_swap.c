@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:37:34 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/19 00:09:50 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/28 23:11:36 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_tabs	ft_parse_args(int argc, char **argv)
 			{
 				write (2, "Error\n", 6);
 				free (tabs.a.tab);
-				exit (-1);
+				exit (1);
 			}
 			j++;
 		}
@@ -38,6 +38,23 @@ t_tabs	ft_parse_args(int argc, char **argv)
 	}
 	tabs.a.size = i;
 	return (tabs);
+}
+
+void	ft_checker_doublon(t_tabs tabs, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		if (tabs.a.tab[i] == tabs.a.tab[j])
+		{
+			write (2, "Error\n", 6);
+			free (tabs.a.tab);
+			exit (1);
+		}
+		j++;
+	}
 }
 
 t_tabs	ft_parse_arg(char **argv)
@@ -57,6 +74,7 @@ t_tabs	ft_parse_arg(char **argv)
 	while (tabs_temp[i])
 	{
 		tabs.a.tab[i] = ft_atoi(tabs_temp[i]);
+		ft_checker_doublon(tabs, i);
 		free(tabs_temp[i]);
 		i++;
 	}

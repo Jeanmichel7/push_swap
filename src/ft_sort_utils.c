@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:45:53 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/17 02:08:12 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:16:09 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,26 @@ t_tabs	ft_order_tab_with_rotate(t_tabs tabs)
 		while (tabs.a.tab[0] != min)
 			ft_ra(tabs);
 	return (tabs);
+}
+
+void	ft_print_tabs(t_tabs tabs)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("\n     A     |     B\n");
+	ft_printf("-----------|-----------\n");
+	while (i < tabs.a.size || i < tabs.b.size)
+	{
+		if (i < tabs.a.size)
+			ft_printf("% 10d |", tabs.a.tab[i]);
+		else
+			ft_printf("           |");
+		if (tabs.b.size != 0 && tabs.b.size > i)
+			ft_printf("% 10d\n", tabs.b.tab[i]);
+		else
+			ft_printf("\n");
+		i++;
+	}
+	ft_printf("\n\n");
 }
