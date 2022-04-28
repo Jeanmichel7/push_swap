@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:20:16 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/04/29 00:05:47 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:34:39 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_tabs	ft_sort(t_tabs tabs)
 {
+	ft_print_tabs(tabs);
 	if (!ft_tab_is_sort(tabs.a))
 	{
 		if (tabs.a.tab[0] > tabs.a.tab[1])

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 17:55:22 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/18 23:28:50 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/29 01:02:27 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,7 @@ int	main(int argc, char **argv)
 	free (tabs.a.tab);
 	return (0);
 }
+
+/*
+make re && ./push_swap 824 -119 215 -308 217
+*/
