@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:20:16 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/04/29 00:34:39 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 22:45:24 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_tabs	ft_sort(t_tabs tabs)
 {
-	ft_print_tabs(tabs);
 	if (!ft_tab_is_sort(tabs.a))
 	{
-		if (tabs.a.tab[0] > tabs.a.tab[1])
+		if (tabs.a.tab[0] > tabs.a.tab[1]
+			&& ft_tab_is_sort_with_rotate(tabs.a) != 1)
 			ft_sa(tabs);
 		if (ft_tab_is_sort_with_rotate(tabs.a) == 1)
 			tabs = ft_order_tab_with_rotate(tabs);
@@ -32,7 +32,8 @@ t_tabs	ft_sort(t_tabs tabs)
 
 void	ft_sub_first_sort(t_tabs *tabs, t_sort *sort)
 {
-	if ((sort->i_check == 1 && tabs->a.tab[sort->i_check] > sort->ll_max)
+	if ((sort->i_check == 1 && tabs->a.tab[1] > tabs->a.tab[tabs->a.size - 1]
+		&& tabs->a.tab[1] < tabs->a.tab[0])
 		|| (sort->i_check == 0 && tabs->a.tab[1] < tabs->a.tab[0]
 			&& tabs->a.tab[0] > sort->last_max)
 		|| (sort->i_check == 0 && tabs->a.tab[1] == ft_search_min(tabs->a)))
@@ -59,13 +60,15 @@ t_tabs	ft_first_sort(t_tabs tabs)
 	while (sort.i < tabs.a.size + tabs.b.size
 		&& ft_tab_is_sort_with_rotate(tabs.a) != 1 && !ft_tab_is_sort(tabs.a))
 	{
-		ft_print_tabs(tabs);
 		if (tabs.b.size % S_BLOCK == 0 && tabs.b.size > 0)
 		{
 			tabs = ft_order_tabs_b(tabs);
 			sort.offset = 0;
 		}
-		if (tabs.a.tab[sort.i_check] < sort.last_max)
+		if (tabs.a.tab[sort.i_check] == ft_search_max(tabs.a)
+			&& sort.i_check != 0 && tabs.a.size > 3)
+			sort = ft_sort_push(&sort, &tabs);
+		else if (tabs.a.tab[sort.i_check] < sort.last_max)
 			ft_sub_first_sort(&tabs, &sort);
 		else
 			sort = ft_sort_ra(sort, &tabs);
@@ -78,10 +81,8 @@ t_tabs	ft_second_sort(t_tabs tabs)
 {
 	while (tabs.b.size)
 	{
-		ft_print_tabs(tabs);
 		tabs = ft_pa_ordered(tabs);
 	}
-	ft_print_tabs(tabs);
 	tabs = ft_order_tabs_a(tabs);
 	return (tabs);
 }

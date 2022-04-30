@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_order_tabs_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 11:44:35 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/17 02:08:33 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 21:22:04 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ t_tabs	ft_order_tabs_a(t_tabs tabs)
 	min = tabs.a.tab[index_min];
 	if (min == tabs.a.tab[0])
 		return (tabs);
-	if (index_min >= tabs.a.size / 2)
-		while (tabs.a.tab[0] != min)
-			ft_rra(tabs);
-	else
+	if (index_min <= tabs.a.size / 2)
 		while (tabs.a.tab[0] != min)
 			ft_ra(tabs);
+	else
+		while (tabs.a.tab[0] != min)
+			ft_rra(tabs);
 	return (tabs);
 }
 

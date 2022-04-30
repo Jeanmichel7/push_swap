@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:45:53 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/29 00:16:09 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 22:46:47 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	ft_tab_is_sort_with_rotate(t_tab tab)
 {
 	int	i;
 	int	min_gr1;
+	int	max_gr1;
+	int	min_gr2;
 	int	max_gr2;
 
 	i = 0;
@@ -52,16 +54,15 @@ int	ft_tab_is_sort_with_rotate(t_tab tab)
 		i++;
 	if (i == tab.size - 1)
 		return (0);
-	i++;
+	max_gr1 = tab.tab[i++];
+	min_gr2 = tab.tab[i];
 	max_gr2 = tab.tab[i];
 	while (i < tab.size - 1 && tab.tab[i] < tab.tab[i + 1])
-	{
-		max_gr2 = tab.tab[i + 1];
-		i++;
-	}
+		max_gr2 = tab.tab[i++ + 1];
 	if (i == tab.size - 1 && tab.tab[i] > tab.tab[i - 1])
 		max_gr2 = tab.tab[i];
-	if (i == tab.size - 1 && max_gr2 < min_gr1)
+	if (i == tab.size - 1 && (max_gr2 < min_gr1
+		|| max_gr1 < min_gr2))
 		return (1);
 	return (0);
 }

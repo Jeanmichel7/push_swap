@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_first_sort_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:35:59 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/18 00:41:21 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 22:47:50 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_sort	ft_sort_swap(t_sort sort, t_tabs *tabs)
 {
 	sort.ll_max = (*tabs).a.tab[sort.i_check];
 	ft_sa(*tabs);
-	ft_ra(*tabs);
 	return (sort);
 }
 
