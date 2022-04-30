@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:20:16 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/04/30 22:45:24 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 23:19:40 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,16 @@ t_tabs	ft_first_sort(t_tabs tabs)
 
 t_tabs	ft_second_sort(t_tabs tabs)
 {
+	int	state;
+
+	state = 0;
 	while (tabs.b.size)
 	{
 		tabs = ft_pa_ordered(tabs);
+		state = 1;
 	}
+	if (state)
+		free(tabs.b.tab);
 	tabs = ft_order_tabs_a(tabs);
 	return (tabs);
 }

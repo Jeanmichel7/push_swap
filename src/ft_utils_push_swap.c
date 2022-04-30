@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_push_swap.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:37:34 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/28 23:11:36 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 23:28:21 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,26 @@ t_tabs	ft_parse_args(int argc, char **argv)
 	return (tabs);
 }
 
-void	ft_checker_doublon(t_tabs tabs, int i)
+void	ft_checker_doublon(t_tabs tabs, int i, char **tabs_temp)
 {
 	int	j;
+	int	k;
 
 	j = 0;
 	while (j < i)
 	{
 		if (tabs.a.tab[i] == tabs.a.tab[j])
 		{
+			k = 0;
 			write (2, "Error\n", 6);
 			free (tabs.a.tab);
+			while (tabs_temp[k])
+			{
+				if (k > i)
+					free (tabs_temp[k]);
+				k++;
+			}
+			free(tabs_temp);
 			exit (1);
 		}
 		j++;
@@ -67,15 +76,15 @@ t_tabs	ft_parse_arg(char **argv)
 	tabs_temp = ft_split(argv[1], ' ');
 	i = -1;
 	len = 0;
-	while (tabs_temp[++i])
+	while (tabs_temp && tabs_temp[++i])
 		len++;
 	tabs.a.tab = ft_calloc(sizeof(int), len);
 	i = 0;
-	while (tabs_temp[i])
+	while (tabs_temp && tabs_temp[i])
 	{
 		tabs.a.tab[i] = ft_atoi(tabs_temp[i]);
-		ft_checker_doublon(tabs, i);
 		free(tabs_temp[i]);
+		ft_checker_doublon(tabs, i, tabs_temp);
 		i++;
 	}
 	free(tabs_temp);
