@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:20:16 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/04/30 23:35:22 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/04/30 23:45:31 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_tabs	ft_sort(t_tabs tabs)
 		}
 	}
 	return (tabs);
+	
 }
 
 void	ft_sub_first_sort(t_tabs *tabs, t_sort *sort)

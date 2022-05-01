@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:37:34 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/30 23:28:21 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/05/01 13:46:40 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,13 @@ t_tabs	ft_parse_arg(char **argv)
 {
 	t_tabs	tabs;
 	char	**tabs_temp;
+	char	*str_trim;
 	int		i;
 	int		len;
 
-	tabs_temp = ft_split(argv[1], ' ');
+	str_trim = ft_strtrim(argv[1], " ");
+	tabs_temp = ft_split(str_trim, ' ');
+	free(str_trim);
 	i = -1;
 	len = 0;
 	while (tabs_temp && tabs_temp[++i])
