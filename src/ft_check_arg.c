@@ -6,15 +6,15 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 17:56:23 by jeulliot          #+#    #+#             */
-/*   Updated: 2022/05/01 13:38:49 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:02:20 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int ft_is_int(char *str)
+int	t_is_int(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')
@@ -29,10 +29,10 @@ int ft_is_int(char *str)
 	return (1);
 }
 
-void ft_check_arg_error(int argc, char **argv)
+void	ft_check_arg_error(int argc, char **argv)
 {
-	int i;
-	int nbr;
+	int	i;
+	int	nbr;
 
 	if (argc == 1)
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:45:53 by jrasser           #+#    #+#             */
-/*   Updated: 2022/04/30 22:46:47 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:01:44 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_tab_is_sort_with_rotate(t_tab tab)
 	if (i == tab.size - 1 && tab.tab[i] > tab.tab[i - 1])
 		max_gr2 = tab.tab[i];
 	if (i == tab.size - 1 && (max_gr2 < min_gr1
-		|| max_gr1 < min_gr2))
+			|| max_gr1 < min_gr2))
 		return (1);
 	return (0);
 }
