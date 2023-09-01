@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+         #
+#    By: jrasser <jrasser@student.42mulhouse.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 17:56:04 by jeulliot          #+#    #+#              #
-#    Updated: 2022/04/30 22:45:50 by jrasser          ###   ########.fr        #
+#    Updated: 2023/09/01 23:02:34 by jrasser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,9 @@ cleanb:
 				${RM} ${OBJS_BONUS}
 
 fclean:			clean
-				${RM} ${NAME}
+				${RM} ${NAME} ${NAME_BONUS}
 				@make fclean -C libft/
 
-fcleanb:		cleanb
-				${RM} ${NAME_BONUS}
-				@make fclean -C libft/
-	
 re:				fclean all
 
 rebonus:		fclean fcleanb all bonus
